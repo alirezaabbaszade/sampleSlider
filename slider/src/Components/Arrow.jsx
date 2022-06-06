@@ -5,7 +5,7 @@ function Arrow(props) {
         <div className="arrow-wrapper">
             <div className="round">
                 <div id="cta">
-                    <span className="arrow prev"></span>
+                    <span className="arrow next"></span>
                 </div>
             </div>
         </div>
