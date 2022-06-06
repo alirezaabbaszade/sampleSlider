@@ -8,9 +8,9 @@ function Slider(props) {
         <div className="slide-container">
 
             <div className="wrapper">
-                <Arrow/>
+                <Arrow direction='prev'/>
                 <Card/>
-                <Arrow/>
+                <Arrow direction='next'/>
             </div>
         </div>
 
