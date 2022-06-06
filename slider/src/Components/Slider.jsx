@@ -35,9 +35,9 @@ function Slider({hero}) {
             <div className="wrapper">
                 {!heroes.length ? <div>Loading...!</div> :
                     <>
-                        <Arrow direction='prev' handleClick={handleNext}/>
+                        <Arrow direction='prev' handleClick={handlePrev}/>
                         <Card hero={heroes[courser]}  />
-                        <Arrow direction='next' handleClick={handlePrev}/>
+                        <Arrow direction='next' handleClick={handleNext}/>
                     </>
                 }
             </div>
