@@ -1,16 +1,45 @@
 import React from 'react';
 import Arrow from "./Arrow";
 import Card from "./Card";
+import {useState, useEffect} from "react";
 
-function Slider(props) {
+function Slider({hero}) {
+    const [heroes, setHeroes] = useState([]);
+    const [courser, setCourser] = useState(0);
+    useEffect(() => {
+        fetch('http://localhost:3001/heroes')
+            .then(res => res.json())
+            .then(heroes => setHeroes(heroes))
+            .catch(err => {
+                console.log('Something has wrong', err);
+            })
+
+    }, []);
+
+    function handleNext() {
+        const current = courser + 1 < heroes.length ? courser + 1 : 0;
+        setCourser(current)
+
+    }
+
+    function handlePrev() {
+
+        const current = courser - 1 < 0 ? (heroes.length - 1) : 0;
+        setCourser(current)
+    }
+
     return (
 
         <div className="slide-container">
 
             <div className="wrapper">
-                <Arrow direction='prev'/>
-                <Card/>
-                <Arrow direction='next'/>
+                {!heroes.length ? <div>Loading...!</div> :
+                    <>
+                        <Arrow direction='prev' handleClick={handleNext}/>
+                        <Card hero={heroes[courser]}  />
+                        <Arrow direction='next' handleClick={handlePrev}/>
+                    </>
+                }
             </div>
         </div>
 

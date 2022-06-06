@@ -1,19 +1,21 @@
 import React from 'react';
 import State from "./State";
 
-function UnitStates(props) {
+function UnitStates({units, name}) {
+    const states = units.map((unit, index) => <State
+        state={unit.state}
+        value={unit.value}
+        no-border={index === units.length-1}/>)
     return (
-        <div className="clash-card__unit-stats clash-card__unit-stats--barbarian clearfix">
+        <div className={`clash-card__unit-stats clash-card__unit-stats--${name} clearfix`}>
 
-            <State state={20} value="Training"/>
-            <State state={16} value="Speed"/>
-            <State state={150} value="Cost"/>
+            {states}
 
         </div>
 
 
     )
-        ;
+
 }
 
 export default UnitStates;
